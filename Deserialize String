@@ -1,0 +1,21 @@
+function deserializeString(input) {
+    let result = [];
+    let line;
+    while ((line = input.shift()) !== "end") {
+        let [letter, param] = line.split(`:`);
+        param = param.split(`/`);
+        param.forEach(x => {
+            x = Number(x);
+            for(let a=0;a<=x;a++){
+                if(a===x){
+                    result.splice(x, 1, letter);
+                } else {
+                    result.push("*");
+                }
+            }
+
+        });
+    }
+    result = result.filter(el => el !== "*");
+    console.log(result.join(``));
+}
